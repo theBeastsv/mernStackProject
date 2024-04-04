@@ -7,6 +7,7 @@ import userRouter from "./routes/userRoutes.js";
 import jobRouter from "./routes/jobRoutes.js";
 import applicationRouter from "./routes/applicationRoutes.js";
 import {dbConnection} from "./database/db.js";
+import ErrorHandler from "./middlewares/error.js"
 const app = express();
 config({ path: "./config/.env" });
 
@@ -33,4 +34,5 @@ app.use("./api/job", jobRouter);
 app.use("./api/application", applicationRouter);
 
 dbConnection();
+app.use(ErrorHandler);
 export default app;
